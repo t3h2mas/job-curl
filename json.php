@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * read_json
+ * takes: string -> $fname
+ * gives: decoded json object
+ */
 function read_json($fname)
 {
     $f = fopen($fname, 'r') or die('unable to open file!');
@@ -8,6 +13,13 @@ function read_json($fname)
     return json_decode($resp);
 }
 
+/*
+ * write_json
+ * takes: 
+ * - string -> $fname
+ * - obj -> $json_obj
+ * gives: writes json to file; returns true;
+ */
 function write_json($fname, $json_obj)
 {
     $f = fopen($fname, 'w') or die ('unable to open file!');
