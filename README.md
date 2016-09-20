@@ -6,3 +6,8 @@ navigate to the project folder and [run](http://php.net/downloads.php) `php -S l
 
 ## get started
 `curl -H "X-JOB-ID: front-end" localhost:1337`
+
+### etc
+this is only a prototype that saves to a json file
+
+> scaling not included
