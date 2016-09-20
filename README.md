@@ -1,5 +1,5 @@
 # curl-posts
-PHP Job Postings that you interact with over the command line.
+Job Postings that you interact with over the command line.
 
 ## start the server
 navigate to the project folder and [run](http://php.net/downloads.php) `php -S localhost:1337`
@@ -11,3 +11,6 @@ navigate to the project folder and [run](http://php.net/downloads.php) `php -S l
 this is only a prototype that saves to a json file
 
 > scaling not included
+
+### clear the json file
+`php -r "require('json.php');write_json('applicants.json', ['entries' => array()]);"` from the project folder
