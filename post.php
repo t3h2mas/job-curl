@@ -5,7 +5,14 @@ require_once('json.php');
 function handle_post($job_id) 
 {
     header('Content-Type: application/json');
+    $applicant = get_applicant($job_id);
+    save_applicant($applicant);
+    echo json_encode($applicant, JSON_PRETTY_PRINT) . PHP_EOL;
+    return;
+}
 
+function get_applicant($job_id)
+{
     $raw_post_data = file_get_contents('php://input');
     $decoded = json_decode($raw_post_data, true) or die('invalid json data.');
  
@@ -16,10 +23,7 @@ function handle_post($job_id)
     $response['resume_url'] = @$decoded['resume_url'] ?: 'null';
     $response['projects'] = @$decoded['projects'] ?: 'null';
     $response['message'] = @$decoded['message'] ?: 'null';
-
-    save_applicant($response);
-    echo json_encode($response, JSON_PRETTY_PRINT) . PHP_EOL;
-    return;
+    return $response;
 }
 
 function save_applicant($new_applicant, $fname = 'applicants.json')
