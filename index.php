@@ -1,6 +1,7 @@
 <?php
 require_once('get.php');
 require_once('post.php');
+require_once('config.php');
 
 $job_id = $_SERVER['HTTP_X_JOB_ID'];
 switch($_SERVER['REQUEST_METHOD']) {

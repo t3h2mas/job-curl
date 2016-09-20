@@ -1,14 +1,16 @@
 <?php
 require_once('json.php');
+require_once('config.php');
 
 // todo: only handle certain jobs? 
 function handle_post($job_id) 
 {
     header('Content-Type: application/json');
+    $conf = config();
+    $fname = $conf['fname'];
     $applicant = get_applicant($job_id);
-    save_applicant($applicant);
+    save_applicant($applicant, $fname);
     echo json_encode($applicant, JSON_PRETTY_PRINT) . PHP_EOL;
-    return;
 }
 
 function get_applicant($job_id)
@@ -26,7 +28,7 @@ function get_applicant($job_id)
     return $response;
 }
 
-function save_applicant($new_applicant, $fname = 'applicants.json')
+function save_applicant($new_applicant, $fname)
 {
     // create default file w/ expected json
     if (!file_exists($fname)) {

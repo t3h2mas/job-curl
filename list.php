@@ -1,7 +1,10 @@
 <?php
 require_once('json.php');
-$applicants = read_json('applicants.json', true);
-$entries = $applicants['entries'] or die('Bork');
+require_once('config.php');
+$conf = config();
+
+$applicants = read_json($conf['fname'], true);
+$entries = $applicants['entries'];
 $num = count($entries);
 ?>
 <html>

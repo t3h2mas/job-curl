@@ -1,7 +1,9 @@
 <?php
+require_once('config.php');
+
 function handle_get($job_id)
 {
-
+    $conf = config();
     $responses = [
         'answer' => 'The answer to life is' . PHP_EOL . ' 42.',
         'front-end' => '  Front End Ninja Wanted!' . PHP_EOL . 
@@ -13,7 +15,7 @@ function handle_get($job_id)
             '  Required: Oneness with devtools is a must.' . PHP_EOL . 
             PHP_EOL . 
             '  To submit your application:' . PHP_EOL . 
-            '  curl -X POST -H "X-JOB-ID: front-end" localhost:1337 -d \'{' . PHP_EOL . 
+            '  curl -X POST -H "X-JOB-ID: front-end" ' . $conf['host'] . ' -d \'{' . PHP_EOL . 
                 "      \"name\": \"Full Name\"," . PHP_EOL . 
                 "      \"email\": \"you@domain.com\"," . PHP_EOL . 
                 "      \"location\": \"The Yellow Brick Road\"," . PHP_EOL . 
