@@ -5,12 +5,12 @@
  * takes: string -> $fname
  * gives: decoded json object
  */
-function read_json($fname)
+function read_json($fname, $assoc = false)
 {
     $f = fopen($fname, 'r') or die('unable to open file!');
     $resp = fread($f, filesize($fname));
     fclose($f);
-    return json_decode($resp);
+    return json_decode($resp, $assoc);
 }
 
 /*
