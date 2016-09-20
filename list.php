@@ -2,6 +2,7 @@
 require_once('json.php');
 $applicants = read_json('applicants.json', true);
 $entries = $applicants['entries'] or die('Bork');
+$num = count($entries);
 ?>
 <html>
 <head>
@@ -10,7 +11,7 @@ $entries = $applicants['entries'] or die('Bork');
     <link href="static/style.css" rel="stylesheet">
 </head>
 <body>
-    <b>Applicants: </b>
+    <b>Applicants: <?php echo $num; ?></b>
     <div class="applicants">
     <?php foreach($entries as $entry): ?>
         <div class="entry">
