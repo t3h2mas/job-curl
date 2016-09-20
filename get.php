@@ -2,24 +2,14 @@
 function handle_get($job_id)
 {
 
-    $answer = 'The answer to life is' . PHP_EOL . 
-    ' 42.' . PHP_EOL;
+    $responses = [
+        'answer' => 'The answer to life is' . PHP_EOL . ' 42.',
+        'front-end' => 'front end gig!'
+    ];
 
-    $fcc = 'https://freecodecamp.com/' . PHP_EOL;
-
-    switch ($job_id) {
-        case 'answer':
-            echo $answer;
-            break;
-        
-        case 'learn':
-            echo $fcc;
-            break;
-
-        default:
-            echo 'Unauthorized' . PHP_EOL;
-            break;
-    }
+    // get $job_id from responses OR Unauthorized.
+    $response = @$responses[$job_id] ?: 'Unauthorized';
+    echo $response . PHP_EOL;
     return;
 }
 ?>
