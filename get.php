@@ -1,5 +1,5 @@
 <?php
-function handle_get($post_id)
+function handle_get($job_id)
 {
 
     $answer = 'The answer to life is' . PHP_EOL . 
@@ -7,7 +7,7 @@ function handle_get($post_id)
 
     $fcc = 'https://freecodecamp.com/' . PHP_EOL;
 
-    switch ($post_id) {
+    switch ($job_id) {
         case 'answer':
             echo $answer;
             break;
