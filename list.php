@@ -6,6 +6,8 @@ $entries = $applicants['entries'] or die('Bork');
 <html>
 <head>
     <title>Applicants</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="static/style.css" rel="stylesheet">
 </head>
 <body>
     <b>Applicants: </b>
