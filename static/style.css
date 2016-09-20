@@ -2,3 +2,10 @@ body {
     font-family: 'Quicksand', sans-serif;
     font-size: 1.5rem;
 }
+
+.entry:after {
+    content: ",";
+}
+.entry:last-child:after {
+    content: "";
+}
