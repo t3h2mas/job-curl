@@ -17,7 +17,6 @@ function handle_post($job_id)
     $response['projects'] = @$decoded['projects'] ?: 'null';
     $response['message'] = @$decoded['message'] ?: 'null';
 
-    // todo: handle errors w/ write/read 
     save_applicant($response);
     echo json_encode($response, JSON_PRETTY_PRINT) . PHP_EOL;
     return;
