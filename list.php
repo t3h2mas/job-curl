@@ -1,11 +1,17 @@
 <?php
 require_once('json.php');
+require_once('dbconfig.php');
 require_once('config.php');
 $conf = config();
 
-$applicants = read_json($conf['fname'], true);
-$entries = $applicants['entries'];
-$num = count($entries);
+//$applicants = read_json($conf['fname'], true);
+//$entries = $applicants['entries'];
+$q = "SELECT * FROM apps";
+if(!$result = $conn->query($q)){
+    die('Error running the query [' . $conn->error . ']');
+}
+
+$num = $result->num_rows;
 ?>
 <html>
 <head>
@@ -16,10 +22,10 @@ $num = count($entries);
 <body>
     <b>Applicants: <?php echo $num; ?></b>
     <div class="applicants">
-    <?php foreach($entries as $entry): ?>
+    <?php while($row = $result->fetch_assoc()) {?>
         <div class="entry">
         {
-            <?php foreach($entry as $key=>$value): ?>
+            <?php foreach($row as $key=>$value): ?>
             <div class="<?php echo $key; ?>">
                 &nbsp;&nbsp;&nbsp;&nbsp;"<?php echo $key; ?>": 
                 "<span class="value"><?php echo $value; ?></span>"
@@ -27,7 +33,9 @@ $num = count($entries);
             <?php endforeach; ?>
         }
         </div>
-    <?php endforeach; ?>
+    <?php 
+    }
+    $result->free(); ?>
     </div>
     <script src="static/app.js"></script>
 </body>
